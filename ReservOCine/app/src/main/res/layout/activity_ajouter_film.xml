@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AjouterFilm">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/btnUpload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upload Image" />
+
+        <EditText
+            android:id="@+id/etImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Image Path"
+            android:enabled="false" />
+
+        <EditText
+            android:id="@+id/etTitre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Titre" />
+
+        <EditText
+            android:id="@+id/etDuree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Durée (hh:mm)"
+            android:inputType="time" />
+
+        <EditText
+            android:id="@+id/etDateSortie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Date de sortie (AAAA-MM-JJ)"
+            android:inputType="date" />
+
+        <EditText
+            android:id="@+id/etSynopsis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Synopsis" />
+
+        <EditText
+            android:id="@+id/etDateDebut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Début de disponibilité (AAAA-MM-JJThh:mm:ss)"
+            android:inputType="datetime" />
+
+        <EditText
+            android:id="@+id/etDateFin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Fin de disponibilité (AAAA-MM-JJThh:mm:ss)"
+            android:inputType="datetime" />
+
+        <Button
+            android:id="@+id/btnAjouter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ajouter" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
