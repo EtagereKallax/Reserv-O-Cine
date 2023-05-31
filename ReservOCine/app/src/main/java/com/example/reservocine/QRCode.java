@@ -3,8 +3,11 @@ package com.example.reservocine;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,4 +50,26 @@ public class QRCode extends AppCompatActivity {
             }
         });
     }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.reservations:
+                startActivity(new Intent(this, QRCode.class));
+                return true;
+            case R.id.accueil:
+                startActivity(new Intent(this, MainActivity.class));
+                return true;
+            case R.id.quitter:
+                finish();
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
 }
