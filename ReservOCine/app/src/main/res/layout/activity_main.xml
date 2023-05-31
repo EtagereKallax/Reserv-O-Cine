@@ -28,5 +28,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.17" />
 
+    <Button
+        android:id="@+id/AjouterFilm"
+        android:layout_width="247dp"
+        android:layout_height="68dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Ajouter un film" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,6 +23,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(y);
             }
         });
+
+        Button ajouterFilm;
+        ajouterFilm = findViewById(R.id.AjouterFilm);
+        ajouterFilm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent x = new Intent(MainActivity.this, AjouterFilm.class);
+                startActivity(x);
+                finish();
+            }
+        });
     }
 
 }
