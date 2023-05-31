@@ -22,6 +22,7 @@
         android:layout_height="68dp"
         android:layout_gravity="center_horizontal"
         android:text="QR CODE (temporaire)"
+        android:background="@drawable/bouton_rond"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
