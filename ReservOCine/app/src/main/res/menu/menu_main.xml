@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/accueil"
+        android:title="@string/accueil"
+        app:showAsAction="never">
+    </item>
+    <item android:id="@+id/films"
+        android:title="@string/films"
+        app:showAsAction="never">
+    </item>
+    <item android:id="@+id/reservations"
+        android:title="@string/reservations"
+        app:showAsAction="never">
+    </item>
+    <item android:id="@+id/quitter"
+        android:title="@string/quitter"
+        app:showAsAction="never">
+    </item>
+</menu>

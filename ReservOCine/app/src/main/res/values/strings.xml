@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ReservOCine</string>
+    <string name="reservations">Vos réservations</string>
+    <string name="films">Films disponibles</string>
+    <string name="accueil">Accueil</string>
+    <string name="quitter">Quitter</string>
 </resources>
