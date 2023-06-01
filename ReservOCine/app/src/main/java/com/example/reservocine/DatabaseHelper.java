@@ -29,7 +29,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Creating table query
     private static final String CREATE_TABLE = "create table " + TABLE_FILMS + "(" +
             _IDFILMS + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            IMAGE + " TEXT NOT NULL, " +
+            IMAGE + " TEXT, " +
             TITRE + " TEXT NOT NULL, " +
             DUREE + " TEXT NOT NULL, " +
             DATE_SORTIE + " TEXT NOT NULL, " +

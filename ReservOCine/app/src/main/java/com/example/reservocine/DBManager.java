@@ -63,15 +63,15 @@ public class DBManager {
         database.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper._ID + "=" + _id, null);
     } */
 
-    public void ajouterFilm(String image, String titre, LocalTime duree, LocalDate dateSortie, String synopsis, LocalDateTime dateDebut, LocalDateTime dateFin, double ratings) {
+    public void ajouterFilm(String image, String titre, String duree, String dateSortie, String synopsis, String dateDebut, String dateFin, double ratings) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.IMAGE, image);
         values.put(DatabaseHelper.TITRE, titre);
-        values.put(DatabaseHelper.DUREE, duree.toString());
-        values.put(DatabaseHelper.DATE_SORTIE, dateSortie.toString());
+        values.put(DatabaseHelper.DUREE, duree);
+        values.put(DatabaseHelper.DATE_SORTIE, dateSortie);
         values.put(DatabaseHelper.SYNOPSIS, synopsis);
-        values.put(DatabaseHelper.DATE_DEBUT, dateDebut.toString());
-        values.put(DatabaseHelper.DATE_FIN, dateFin.toString());
+        values.put(DatabaseHelper.DATE_DEBUT, dateDebut);
+        values.put(DatabaseHelper.DATE_FIN, dateFin);
         values.put(DatabaseHelper.RATINGS, ratings);
         database.insert(DatabaseHelper.TABLE_FILMS, null, values);
     }
