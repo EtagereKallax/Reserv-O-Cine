@@ -6,6 +6,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -17,6 +18,10 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -172,27 +177,44 @@ public class AjouterFilm extends AppCompatActivity implements View.OnClickListen
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null) {
+        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             // Récupérer l'URI de l'image sélectionnée
-            Uri imageUri = data.getData();
+            Uri selectedImageUri = data.getData();
 
-            // Convertir l'URI en chemin de fichier
-            String imagePath = getImagePathFromUri(imageUri);
+            try {
+                // Convertir l'URI de l'image en un Bitmap
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
 
-            // Afficher le chemin de l'image dans l'EditText
-            etImage.setText(imagePath);
+                // Enregistrer le bitmap dans le dossier interne de l'application
+                String imagePath = saveImageToInternalStorage(bitmap);
+
+                // Mettre à jour le champ de texte avec le chemin de l'image
+                etImage.setText(imagePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Erreur lors de la séletion de l'image", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
-    private String getImagePathFromUri(Uri uri) {
-        String[] filePathColumn = { MediaStore.Images.Media.DATA };
-        Cursor cursor = getContentResolver().query(uri, filePathColumn, null, null, null);
-        if(cursor != null && cursor.moveToFirst()) {
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String imagePath = cursor.getString(columnIndex);
-            cursor.close();
-            return imagePath;
+    private String saveImageToInternalStorage(Bitmap bitmap) {
+        // Créer un fichier dans le dossier interne de l'application
+        File directory = getFilesDir();
+        File imageFile = new File(directory, etTitre.getText().toString() + ".jpg");
+
+        try {
+            // Convertir le Bitmap en fichier JPEG et l'enregistrer dans le dossier interne
+            OutputStream outputStream = new FileOutputStream(imageFile);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+            outputStream.flush();
+            outputStream.close();
+
+            // Récupérer le chemin absolu du fichier
+            return imageFile.getAbsolutePath();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Erreur lors de l'enregistrement de l'image", Toast.LENGTH_SHORT).show();
         }
-        return null;
+        return "";
     }
 }
