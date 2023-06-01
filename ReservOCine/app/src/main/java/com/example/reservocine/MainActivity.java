@@ -3,13 +3,21 @@ package com.example.reservocine;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+
+
     }
 
 
@@ -58,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.quitter:
                 finish();
+            case R.id.films:
+                startActivity(new Intent(this, TousLesFilms.class));
+                return true;
             default:
                 return super.onContextItemSelected(item);
         }

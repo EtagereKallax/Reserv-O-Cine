@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class DBManager {
 
@@ -75,4 +76,19 @@ public class DBManager {
         values.put(DatabaseHelper.RATINGS, ratings);
         database.insert(DatabaseHelper.TABLE_FILMS, null, values);
     }
+
+
+    public Cursor selectFilmTendances() {
+        String[] columns = new String[] { DatabaseHelper._IDFILMS, DatabaseHelper.TITRE, DatabaseHelper.IMAGE };
+        Cursor cursor = database.query(DatabaseHelper.TABLE_FILMS, columns, null, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+
+
+    }
+
+
+
 }

@@ -4,4 +4,7 @@
     <string name="films">Films disponibles</string>
     <string name="accueil">Accueil</string>
     <string name="quitter">Quitter</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="empty_list_text"></string>
 </resources>
