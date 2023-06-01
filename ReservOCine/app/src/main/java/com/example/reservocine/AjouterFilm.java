@@ -99,6 +99,9 @@ public class AjouterFilm extends AppCompatActivity implements View.OnClickListen
                 ajouterFilm(image, titre, duree, dateSortie, synopsis, dateDebut, dateFin);
 
                 Toast.makeText(AjouterFilm.this, "Film ajouté avec succès", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(AjouterFilm.this, MainActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
