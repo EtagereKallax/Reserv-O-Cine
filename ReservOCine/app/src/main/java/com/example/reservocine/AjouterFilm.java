@@ -71,8 +71,12 @@ public class AjouterFilm extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View v) {
                 // Ouvrir la galerie pour sélectionner une image
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, PICK_IMAGE_REQUEST);
+                if(etTitre.getText().toString() == "") {
+                    Toast.makeText(AjouterFilm.this, "Veuillez écrire le titre du film avant d'uploader une image", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, PICK_IMAGE_REQUEST);
+                }
             }
         });
 
@@ -95,13 +99,17 @@ public class AjouterFilm extends AppCompatActivity implements View.OnClickListen
                 String dateDebut = etDateDebut.getText().toString();
                 String dateFin = etDateFin.getText().toString();
 
-                // Appeler la méthode pour ajouter le film à la base de données
-                ajouterFilm(image, titre, duree, dateSortie, synopsis, dateDebut, dateFin);
+                if(titre.isEmpty() || duree.isEmpty() || dateSortie.isEmpty() || synopsis.isEmpty() || dateDebut.isEmpty() || dateFin.isEmpty()) {
+                    Toast.makeText(AjouterFilm.this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Appeler la méthode pour ajouter le film à la base de données
+                    ajouterFilm(image, titre, duree, dateSortie, synopsis, dateDebut, dateFin);
 
-                Toast.makeText(AjouterFilm.this, "Film ajouté avec succès", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(AjouterFilm.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+                    Toast.makeText(AjouterFilm.this, "Film ajouté avec succès", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(AjouterFilm.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
     }

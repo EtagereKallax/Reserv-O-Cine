@@ -75,4 +75,13 @@ public class DBManager {
         values.put(DatabaseHelper.RATINGS, ratings);
         database.insert(DatabaseHelper.TABLE_FILMS, null, values);
     }
+
+    public void addUser(String nom, String prenom, String email, String password) {
+        ContentValues values = new ContentValues();
+        values.put(DatabaseHelper.NOM, nom);
+        values.put(DatabaseHelper.PRENOM, prenom);
+        values.put(DatabaseHelper.EMAIL, email);
+        values.put(DatabaseHelper.PASSWORD, password);
+        database.insert(DatabaseHelper.TABLE_USER, null, values);
+    }
 }
