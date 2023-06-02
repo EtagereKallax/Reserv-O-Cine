@@ -79,8 +79,8 @@ public class DBManager {
 
 
     public Cursor selectFilmTendances() {
-        String[] columns = new String[] { DatabaseHelper._IDFILMS, DatabaseHelper.TITRE, DatabaseHelper.IMAGE, DatabaseHelper.SYNOPSIS, DatabaseHelper.DUREE };
-        Cursor cursor = database.query(DatabaseHelper.TABLE_FILMS, columns, null, null, null, null, null);
+        String[] columns = new String[] { DatabaseHelper._IDFILMS, DatabaseHelper.TITRE, DatabaseHelper.IMAGE, DatabaseHelper.DUREE };
+        Cursor cursor = database.query(DatabaseHelper.TABLE_FILMS, columns, null, null, null, null, DatabaseHelper.RATINGS, "3");
         if (cursor != null) {
             cursor.moveToFirst();
         }
@@ -97,7 +97,7 @@ public class DBManager {
     }
 
     public Cursor selectFilmVoirPlus(String where, String[] whereValue) {
-        String[] columns = new String[] { DatabaseHelper._IDFILMS, DatabaseHelper.TITRE, DatabaseHelper.IMAGE, DatabaseHelper.SYNOPSIS, DatabaseHelper.DUREE };
+        String[] columns = new String[] { DatabaseHelper._IDFILMS, DatabaseHelper.TITRE, DatabaseHelper.IMAGE, DatabaseHelper.SYNOPSIS, DatabaseHelper.DUREE, DatabaseHelper.RATINGS };
         Cursor cursor = database.query(DatabaseHelper.TABLE_FILMS, columns, where, whereValue, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();

@@ -23,9 +23,9 @@ public class VoirPlusFilm extends AppCompatActivity {
     private SimpleCursorAdapter adapter;
 
     final String[] from = new String[] {
-            DatabaseHelper.IMAGE, DatabaseHelper.IMAGE, DatabaseHelper.TITRE, DatabaseHelper.SYNOPSIS, DatabaseHelper.DUREE };
+            DatabaseHelper.IMAGE, DatabaseHelper.IMAGE, DatabaseHelper.TITRE, DatabaseHelper.SYNOPSIS, DatabaseHelper.DUREE, DatabaseHelper.RATINGS };
 
-    final int[] to = new int[] {R.id.image ,R.id.imageFilm, R.id.titre, R.id.synopsis, R.id.duree};
+    final int[] to = new int[] {R.id.image ,R.id.imageFilm, R.id.titre, R.id.synopsis, R.id.duree, R.id.ratings};
 
 
     @Override
@@ -57,9 +57,11 @@ public class VoirPlusFilm extends AppCompatActivity {
                 TextView titleTextView = (TextView) view.findViewById(R.id.titre);
                 TextView synopsisTextView = (TextView) view.findViewById(R.id.synopsis);
                 TextView dureeTextView = (TextView) view.findViewById(R.id.duree);
+                TextView noteTextView = (TextView) view.findViewById(R.id.ratings);
 
                 String title = titleTextView.getText().toString();
                 String synopsis = synopsisTextView.getText().toString();
+                String note = noteTextView.getText().toString();
 
                 ImageView imgFilm = (ImageView) view.findViewById(R.id.imageFilm);
                 String imgF = imgFilm.getDrawable().toString();

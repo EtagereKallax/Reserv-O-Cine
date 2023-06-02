@@ -13,8 +13,13 @@
         android:title="@string/reservations"
         app:showAsAction="never">
     </item>
+    <item android:id="@+id/connexion"
+        android:title="@string/connexion"
+        app:showAsAction="never">
+    </item>
     <item android:id="@+id/quitter"
         android:title="@string/quitter"
         app:showAsAction="never">
     </item>
+
 </menu>

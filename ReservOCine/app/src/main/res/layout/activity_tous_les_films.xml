@@ -15,13 +15,14 @@
         android:id="@+id/linearLayout"
         android:layout_width="411dp"
         android:layout_height="220dp"
+        android:background="@drawable/divfilm"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/imageFilm"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.121">
+        app:layout_constraintVertical_bias="0.351">
 
         <TextView
             android:id="@+id/titre"
@@ -91,7 +92,28 @@
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="22dp"
+        android:layout_height="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="@+id/image"
+        app:layout_constraintStart_toEndOf="@+id/image"
+        app:layout_constraintTop_toBottomOf="@+id/synopsis"
+        app:srcCompat="@drawable/baseline_star_rate_24" />
 
+    <TextView
+        android:id="@+id/ratings"
+        android:layout_width="201dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="6dp"
+        android:text="@string/empty_list_text"
+        android:textColor="@color/light_blue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/synopsis" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

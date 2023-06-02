@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -17,6 +19,18 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private DBManager dbManager;
+
+    private ListView listView;
+
+    private SimpleCursorAdapter adapter;
+
+    final String[] from = new String[] {
+            DatabaseHelper.IMAGE, DatabaseHelper.IMAGE, DatabaseHelper.TITRE, DatabaseHelper.DUREE };
+
+    final int[] to = new int[] {R.id.image ,R.id.imageFilm, R.id.titre, R.id.duree};
+
+
 
 
     @Override
@@ -25,15 +39,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        Button boutton;
-        boutton = findViewById(R.id.QRcode);
-        boutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent y = new Intent(MainActivity.this, QRCode.class);
-                startActivity(y);
-            }
-        });
 
         Button ajouterFilm;
         ajouterFilm = findViewById(R.id.AjouterFilm);
@@ -46,18 +51,50 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button inscrire;
-        inscrire = findViewById(R.id.inscrire);
-        inscrire.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+        dbManager = new DBManager(this);
+        dbManager.open();
+        Cursor cursor = dbManager.selectFilmVoirTout();
+
+        listView = (ListView) findViewById(R.id.list_view);
+        listView.setEmptyView(findViewById(R.id.empty));
+
+        adapter = new SimpleCursorAdapter(this, R.layout.activity_tous_les_films, cursor, from, to, 0);
+        adapter.notifyDataSetChanged();
+
+        listView.setAdapter(adapter);
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Inscription.class);
-                startActivity(intent);
-                finish();
+            public void onItemClick(AdapterView<?> parent, View view, int position, long viewId) {
+                TextView titleTextView = (TextView) view.findViewById(R.id.titre);
+                TextView synopsisTextView = (TextView) view.findViewById(R.id.synopsis);
+                TextView dureeTextView = (TextView) view.findViewById(R.id.duree);
+
+                String title = titleTextView.getText().toString();
+                String synopsis = synopsisTextView.getText().toString();
+
+                ImageView imgFilm = (ImageView) view.findViewById(R.id.imageFilm);
+                String imgF = imgFilm.getDrawable().toString();
+
+
+                Intent modify_intent = new Intent(getApplicationContext(), VoirPlusFilm.class);
+                modify_intent.putExtra("imgFilm", imgF);
+                modify_intent.putExtra("title", title);
+
+                startActivity(modify_intent);
             }
         });
 
+
+
     }
+
+
 
 
 
@@ -80,6 +117,9 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             case R.id.films:
                 startActivity(new Intent(this, TousLesFilms.class));
+                return true;
+            case R.id.connexion:
+                startActivity(new Intent(this, Connexion.class));
                 return true;
             default:
                 return super.onContextItemSelected(item);

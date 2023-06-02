@@ -17,7 +17,8 @@ import android.widget.TextView;
 
 import java.io.File;
 
-public class TousLesFilms extends AppCompatActivity { private DBManager dbManager;
+public class TousLesFilms extends AppCompatActivity {
+    private DBManager dbManager;
 
     private ListView listView;
 
