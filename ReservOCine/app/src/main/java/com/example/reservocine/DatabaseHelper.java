@@ -20,14 +20,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATE_FIN = "date_fin";
     public static final String RATINGS = "ratings";
 
+    public static final String TABLE_USER = "utilisateur";
+
+    public static final String _IDUSER = "_iduser";
+    public static final String NOM = "nom";
+    public static final String PRENOM = "prenom";
+    public static final String EMAIL = "email";
+    public static final String PASSWORD = "password";
+
     // Database Information
     static final String DB_NAME = "ReservOCine";
 
-    // database version
     static final int DB_VERSION = 1;
 
     // Creating table query
-    private static final String CREATE_TABLE = "create table " + TABLE_FILMS + "(" +
+    private static final String CREATE_TABLE_FILMS = "create table " + TABLE_FILMS + "(" +
             _IDFILMS + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             IMAGE + " TEXT, " +
             TITRE + " TEXT NOT NULL, " +
@@ -38,18 +45,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             DATE_FIN + " TEXT NOT NULL, " +
             RATINGS + " REAL);";
 
+    private static final String CREATE_TABLE_USER = "create table " + TABLE_USER + "(" +
+            _IDUSER + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            NOM + " TEXT NOT NULL, " +
+            PRENOM + " TEXT NOT NULL, " +
+            EMAIL + " TEXT NOT NULL, " +
+            PASSWORD + " TEXT NOT NULL);";
+
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CREATE_TABLE);
+        db.execSQL(CREATE_TABLE_FILMS);
+        db.execSQL(CREATE_TABLE_USER);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_FILMS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         onCreate(db);
     }
 }

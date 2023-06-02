@@ -105,6 +105,15 @@ public class DBManager {
         return cursor;
     }
 
+    public void addUser(String nom, String prenom, String email, String password) {
+        ContentValues values = new ContentValues();
+        values.put(DatabaseHelper.NOM, nom);
+        values.put(DatabaseHelper.PRENOM, prenom);
+        values.put(DatabaseHelper.EMAIL, email);
+        values.put(DatabaseHelper.PASSWORD, password);
+        database.insert(DatabaseHelper.TABLE_USER, null, values);
+    }
+
 
 
 }
