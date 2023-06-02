@@ -7,34 +7,61 @@
     android:background="@color/dark_blue"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/QRcode"
+        android:layout_width="247dp"
+        android:layout_height="68dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bouton_rond"
+        android:text="QR CODE (temporaire)"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.045" />
 
-        <Button
-            android:id="@+id/QRcode"
-            android:layout_width="247dp"
-            android:layout_height="68dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/bouton_rond"
-            android:text="QR CODE (temporaire)"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.554"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.17" />
+    <Button
+        android:id="@+id/AjouterFilm"
+        android:layout_width="247dp"
+        android:layout_height="68dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Ajouter un film"
+        tools:layout_editor_absoluteX="82dp"
+        tools:layout_editor_absoluteY="115dp" />
 
-        <Button
-            android:id="@+id/AjouterFilm"
-            android:layout_width="247dp"
-            android:layout_height="68dp"
-            android:layout_gravity="center_horizontal"
-            android:text="Ajouter un film" />
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="406dp"
+        android:layout_height="154dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.545">
 
+        <TextView
+            android:id="@+id/tendances"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:text="Films tendances :"
+            android:textColor="@color/light_blue"
+            android:textSize="18dp" />
+    </LinearLayout>
 
-
-
-
-
-
+    <Button
+        android:id="@+id/inscrire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="S'inscrire"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AjouterFilm" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

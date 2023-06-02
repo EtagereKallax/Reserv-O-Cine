@@ -32,6 +32,11 @@
         <activity
             android:name=".QRCode"
             android:exported="false" />
+        <activity android:name=".Inscription"
+            android:exported="false"/>
+        <activity
+            android:name=".Connexion"
+            android:exported="false"/>
     </application>
 
 </manifest>

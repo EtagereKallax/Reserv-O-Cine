@@ -46,7 +46,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        Button inscrire;
+        inscrire = findViewById(R.id.inscrire);
+        inscrire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Inscription.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 
