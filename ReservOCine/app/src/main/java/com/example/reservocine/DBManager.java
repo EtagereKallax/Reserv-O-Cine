@@ -85,8 +85,24 @@ public class DBManager {
             cursor.moveToFirst();
         }
         return cursor;
+    }
 
+    public Cursor selectFilmVoirTout() {
+        String[] columns = new String[] { DatabaseHelper._IDFILMS, DatabaseHelper.TITRE, DatabaseHelper.IMAGE, DatabaseHelper.SYNOPSIS, DatabaseHelper.DUREE };
+        Cursor cursor = database.query(DatabaseHelper.TABLE_FILMS, columns, null, null, null, null, DatabaseHelper.DATE_SORTIE);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
 
+    public Cursor selectFilmVoirPlus(String where, String[] whereValue) {
+        String[] columns = new String[] { DatabaseHelper._IDFILMS, DatabaseHelper.TITRE, DatabaseHelper.IMAGE, DatabaseHelper.SYNOPSIS, DatabaseHelper.DUREE };
+        Cursor cursor = database.query(DatabaseHelper.TABLE_FILMS, columns, where, whereValue, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
     }
 
 

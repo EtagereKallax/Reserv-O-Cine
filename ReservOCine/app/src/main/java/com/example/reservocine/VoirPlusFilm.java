@@ -4,21 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
-import java.io.File;
-
-public class TousLesFilms extends AppCompatActivity { private DBManager dbManager;
-
+public class VoirPlusFilm extends AppCompatActivity {
+    private DBManager dbManager;
     private ListView listView;
 
     private SimpleCursorAdapter adapter;
@@ -29,9 +25,6 @@ public class TousLesFilms extends AppCompatActivity { private DBManager dbManage
     final int[] to = new int[] {R.id.image ,R.id.imageFilm, R.id.titre, R.id.synopsis, R.id.duree};
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +33,9 @@ public class TousLesFilms extends AppCompatActivity { private DBManager dbManage
         setContentView(R.layout.fragment_emp_list);
         dbManager = new DBManager(this);
         dbManager.open();
-        Cursor cursor = dbManager.selectFilmVoirTout();
+
+        String titre = getIntent().getExtras().getString("title");
+        Cursor cursor = dbManager.selectFilmVoirPlus("WHERE titre = ", titre);
 
         listView = (ListView) findViewById(R.id.list_view);
         listView.setEmptyView(findViewById(R.id.empty));
@@ -73,7 +68,5 @@ public class TousLesFilms extends AppCompatActivity { private DBManager dbManage
             }
         });
 
-
-
-    }
+}
 }
