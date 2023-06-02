@@ -13,6 +13,9 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class VoirPlusFilm extends AppCompatActivity {
     private DBManager dbManager;
     private ListView listView;
@@ -34,8 +37,10 @@ public class VoirPlusFilm extends AppCompatActivity {
         dbManager = new DBManager(this);
         dbManager.open();
 
-        String titre = getIntent().getExtras().getString("title");
-        Cursor cursor = dbManager.selectFilmVoirPlus("WHERE titre = ", titre);
+        String[] args = new String[1];
+        args[0] = getIntent().getExtras().getString("title");
+
+        Cursor cursor = dbManager.selectFilmVoirPlus("titre = ?", args);
 
         listView = (ListView) findViewById(R.id.list_view);
         listView.setEmptyView(findViewById(R.id.empty));
