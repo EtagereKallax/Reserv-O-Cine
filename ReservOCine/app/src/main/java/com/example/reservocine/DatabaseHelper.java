@@ -49,7 +49,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             _IDUSER + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             NOM + " TEXT NOT NULL, " +
             PRENOM + " TEXT NOT NULL, " +
-            EMAIL + " TEXT NOT NULL, " +
+            EMAIL + " TEXT UNIQUE NOT NULL, " +
             PASSWORD + " TEXT NOT NULL);";
 
     public DatabaseHelper(Context context) {

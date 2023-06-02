@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -114,6 +115,23 @@ public class DBManager {
         database.insert(DatabaseHelper.TABLE_USER, null, values);
     }
 
+    /* public Cursor fetch() {
+        String[] columns = new String[] { DatabaseHelper._ID, DatabaseHelper.SUBJECT, DatabaseHelper.DESC };
+        Cursor cursor = database.query(DatabaseHelper.TABLE_NAME, columns, null, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor
+    } */
 
+    public Cursor selectUser(String email) {
+        String[] columns = new String[] { DatabaseHelper.NOM, DatabaseHelper.PRENOM, DatabaseHelper.EMAIL, DatabaseHelper.PASSWORD };
+        String[] args = new String[] { email };
+        Cursor cursor = database.query(DatabaseHelper.TABLE_USER, columns, "email = ?", args, null, null, null);
+        if(cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
 
 }

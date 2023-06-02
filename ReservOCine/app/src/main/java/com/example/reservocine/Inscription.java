@@ -48,7 +48,6 @@ public class Inscription extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Inscription.this, Connexion.class);
                 startActivity(intent);
-                finish();
             }
         });
     }
