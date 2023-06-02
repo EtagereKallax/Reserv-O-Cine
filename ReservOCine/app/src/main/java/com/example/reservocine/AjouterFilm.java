@@ -117,7 +117,15 @@ public class AjouterFilm extends AppCompatActivity implements View.OnClickListen
 
                         @Override
                         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                            etDuree.setText(hourOfDay + ":" + minute);
+                            if(hourOfDay < 10) {
+                                etDuree.setText("0" + hourOfDay + "h" + minute);
+                            } else if(minute < 10) {
+                                etDuree.setText(hourOfDay + "h0" + minute);
+                            } else if(hourOfDay < 10 && minute < 10) {
+                                etDuree.setText("0" + hourOfDay + "h0" + minute);
+                            } else {
+                                etDuree.setText(hourOfDay + "h" + minute);
+                            }
                         }
                     }, mHour, mMinute, true);
             timePickerDialog.show();
@@ -134,7 +142,7 @@ public class AjouterFilm extends AppCompatActivity implements View.OnClickListen
                         @Override
                         public void onDateSet(DatePicker view, int year,
                                               int monthOfYear, int dayOfMonth) {
-                            etDateSortie.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                            etDateSortie.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                         }
                     }, mYear, mMonth, mDay);
             datePickerDialog.show();
@@ -170,7 +178,7 @@ public class AjouterFilm extends AppCompatActivity implements View.OnClickListen
     }
 
     private void ajouterFilm(String image, String titre, String duree, String dateSortie, String synopsis, String dateDebut, String dateFin) {
-        dbManager.ajouterFilm(image, titre, duree, dateSortie, synopsis, dateDebut, dateFin, Math.random() * 10);
+        dbManager.ajouterFilm(image, titre, duree, dateSortie, synopsis, dateDebut, dateFin, Math.round((Math.random() * 10) * 10) / 10);
     }
 
     @Override
