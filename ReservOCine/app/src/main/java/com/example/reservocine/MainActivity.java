@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         dbManager = new DBManager(this);
         dbManager.open();
-        Cursor cursor = dbManager.selectFilmVoirTout();
+        Cursor cursor = dbManager.selectFilmTendances();
 
         listView = (ListView) findViewById(R.id.list_view);
         listView.setEmptyView(findViewById(R.id.empty));
