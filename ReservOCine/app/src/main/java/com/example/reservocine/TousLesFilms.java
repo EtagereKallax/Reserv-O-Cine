@@ -23,10 +23,9 @@ public class TousLesFilms extends AppCompatActivity { private DBManager dbManage
     private SimpleCursorAdapter adapter;
 
     final String[] from = new String[] {
-            DatabaseHelper.TITRE, DatabaseHelper.IMAGE };
+            DatabaseHelper.IMAGE, DatabaseHelper.IMAGE, DatabaseHelper.TITRE, DatabaseHelper.SYNOPSIS, DatabaseHelper.DUREE };
 
-    final int[] to = new int[] {R.id.imageFilm, R.id.titre };
-    ImageView imageView;
+    final int[] to = new int[] {R.id.image ,R.id.imageFilm, R.id.titre, R.id.synopsis, R.id.duree};
 
 
 
@@ -43,7 +42,6 @@ public class TousLesFilms extends AppCompatActivity { private DBManager dbManage
 
         listView = (ListView) findViewById(R.id.list_view);
         listView.setEmptyView(findViewById(R.id.empty));
-        listView.setEmptyView(findViewById(R.id.emptyIMG));
 
         adapter = new SimpleCursorAdapter(this, R.layout.activity_tous_les_films, cursor, from, to, 0);
         adapter.notifyDataSetChanged();
@@ -54,27 +52,20 @@ public class TousLesFilms extends AppCompatActivity { private DBManager dbManage
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long viewId) {
-                TextView imgTextView = (TextView) view.findViewById(R.id.image);
                 TextView titleTextView = (TextView) view.findViewById(R.id.titre);
+                TextView synopsisTextView = (TextView) view.findViewById(R.id.synopsis);
+                TextView dureeTextView = (TextView) view.findViewById(R.id.duree);
 
-                String image = imgTextView.getText().toString();
                 String title = titleTextView.getText().toString();
+                String synopsis = synopsisTextView.getText().toString();
 
-                File imgFile = new File(image);
-                imageView = (ImageView) view.findViewById(R.id.imageFilm);
+                ImageView imgFilm = (ImageView) view.findViewById(R.id.imageFilm);
+                String imgF = imgFilm.getDrawable().toString();
 
-                if (imgFile.exists()) {
-                    // on below line we are creating an image bitmap variable
-                    // and adding a bitmap to it from image file.
-                    Bitmap imgBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-
-                    // on below line we are setting bitmap to our image view.
-                    imageView.setImageBitmap(imgBitmap);
-                }
 
                 Intent modify_intent = new Intent(getApplicationContext(), MainActivity.class);
+                modify_intent.putExtra("imgFilm", imgF);
                 modify_intent.putExtra("title", title);
-                modify_intent.putExtra("image", image);
 
                 startActivity(modify_intent);
             }
