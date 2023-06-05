@@ -105,10 +105,8 @@
     <TextView
         android:id="@+id/synopsis"
         android:layout_width="220dp"
-        android:layout_height="86dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
-        android:ellipsize="end"
-        android:maxLines="5"
         android:text="@string/empty_list_text"
         android:textColor="@color/light_blue"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"

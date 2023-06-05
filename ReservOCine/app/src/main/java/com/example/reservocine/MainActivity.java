@@ -26,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
     private SimpleCursorAdapter adapter;
 
     final String[] from = new String[] {
-            DatabaseHelper.IMAGE, DatabaseHelper.IMAGE, DatabaseHelper.TITRE, DatabaseHelper.DUREE };
+            DatabaseHelper.IMAGE, DatabaseHelper.IMAGE, DatabaseHelper.TITRE, DatabaseHelper.DUREE, DatabaseHelper.RATINGS };
 
-    final int[] to = new int[] {R.id.image ,R.id.imageFilm, R.id.titre, R.id.duree};
+    final int[] to = new int[] {R.id.image ,R.id.imageFilm, R.id.titre, R.id.duree, R.id.ratings};
 
 
 

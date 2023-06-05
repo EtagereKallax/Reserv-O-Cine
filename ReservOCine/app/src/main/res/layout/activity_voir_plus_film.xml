@@ -62,10 +62,8 @@
     <TextView
         android:id="@+id/synopsis"
         android:layout_width="220dp"
-        android:layout_height="86dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
-        android:ellipsize="end"
-        android:maxLines="5"
         android:text="@string/empty_list_text"
         android:textColor="@color/light_blue"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
@@ -87,6 +85,16 @@
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="22dp"
+        android:layout_height="54dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="@+id/image"
+        app:layout_constraintStart_toEndOf="@+id/image"
+        app:layout_constraintTop_toBottomOf="@+id/synopsis"
+        app:srcCompat="@drawable/baseline_star_rate_24" />
+
     <TextView
         android:id="@+id/ratings"
         android:layout_width="228dp"
@@ -95,9 +103,9 @@
         android:textColor="@color/light_blue"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/synopsis" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

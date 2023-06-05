@@ -7,6 +7,7 @@
     android:background="@drawable/divfilm"
     android:paddingTop="16dp"
     android:paddingEnd="16dp"
+    android:paddingBottom="16dp"
     android:layout_marginBottom="16dp"
     tools:context=".TousLesFilms">
 
@@ -26,7 +27,7 @@
 
         <TextView
             android:id="@+id/titre"
-            android:layout_width="wrap_content"
+            android:layout_width="369dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
@@ -34,7 +35,11 @@
             android:text="@string/empty_list_text"
             android:textColor="@color/light_blue"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/synopsis"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
 
     </LinearLayout>
@@ -43,7 +48,7 @@
         android:id="@+id/imageFilm"
         android:layout_width="151dp"
         android:layout_height="153dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/bouton_rond"
         android:minWidth="120dp"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
@@ -67,30 +72,30 @@
     <TextView
         android:id="@+id/synopsis"
         android:layout_width="220dp"
-        android:layout_height="86dp"
-        android:layout_marginEnd="32dp"
-        android:ellipsize="end"
-        android:maxLines="5"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="46dp"
         android:text="@string/empty_list_text"
         android:textColor="@color/light_blue"
+        android:ellipsize="end"
+        android:maxLines="5"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintStart_toEndOf="@+id/imageFilm"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+        app:layout_constraintTop_toTopOf="@+id/duree" />
 
     <TextView
         android:id="@+id/duree"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="220dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         android:text="@string/empty_list_text"
         android:textColor="@color/light_blue"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/synopsis"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+        app:layout_constraintStart_toStartOf="@+id/synopsis"
+        app:layout_constraintTop_toTopOf="@+id/imageFilm" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -102,16 +107,16 @@
         app:layout_constraintTop_toBottomOf="@+id/synopsis"
         app:srcCompat="@drawable/baseline_star_rate_24" />
 
+
     <TextView
         android:id="@+id/ratings"
         android:layout_width="201dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="6dp"
+        android:layout_height="24dp"
         android:text="@string/empty_list_text"
         android:textColor="@color/light_blue"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/synopsis" />
 
