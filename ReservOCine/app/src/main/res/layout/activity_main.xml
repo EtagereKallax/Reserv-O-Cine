@@ -13,11 +13,13 @@
         android:layout_width="247dp"
         android:layout_height="68dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="32dp"
         android:background="@drawable/bouton_rond"
         android:text="Ajouter un film"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/list_view" />
 
 
     <ListView
@@ -69,6 +71,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="28dp"
+
             android:text="@string/empty_list_text"
             android:textColor="@color/light_blue"
             android:textSize="20sp"
@@ -138,7 +141,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintStart_toEndOf="@+id/imageFilm"
-        app:layout_constraintTop_toBottomOf="@+id/synopsis" />
+        app:layout_constraintTop_toBottomOf="@+id/list_view" />
 
 
 
