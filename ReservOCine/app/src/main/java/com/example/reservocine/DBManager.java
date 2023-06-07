@@ -81,7 +81,7 @@ public class DBManager {
 
     public Cursor selectFilmTendances() {
         String[] columns = new String[] { DatabaseHelper._IDFILMS, DatabaseHelper.TITRE, DatabaseHelper.IMAGE, DatabaseHelper.DUREE, DatabaseHelper.RATINGS };
-        Cursor cursor = database.query(DatabaseHelper.TABLE_FILMS, columns, null, null, null, null, DatabaseHelper.RATINGS, "3");
+        Cursor cursor = database.query(DatabaseHelper.TABLE_FILMS, columns, null, null, null, null, DatabaseHelper.RATINGS +" DESC", "3");
         if (cursor != null) {
             cursor.moveToFirst();
         }

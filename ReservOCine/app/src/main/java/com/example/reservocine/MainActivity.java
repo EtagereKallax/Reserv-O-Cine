@@ -41,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button ajouterFilm;
-        ajouterFilm = findViewById(R.id.AjouterFilm);
+        ajouterFilm = findViewById(R.id.voirTout);
         ajouterFilm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent x = new Intent(MainActivity.this, AjouterFilm.class);
+                Intent x = new Intent(MainActivity.this, TousLesFilms.class);
                 startActivity(x);
                 finish();
             }
@@ -120,6 +120,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.connexion:
                 startActivity(new Intent(this, Connexion.class));
+                return true;
+            case R.id.AjouterFilm:
+                startActivity(new Intent(this, AjouterFilm.class));
                 return true;
             default:
                 return super.onContextItemSelected(item);

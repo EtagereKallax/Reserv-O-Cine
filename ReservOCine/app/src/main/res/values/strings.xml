@@ -8,4 +8,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="empty_list_text"></string>
     <string name="connexion">Connexion</string>
+    <string name="ajouterFilm">Ajouter film</string>
 </resources>

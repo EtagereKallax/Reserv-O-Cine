@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -31,7 +32,6 @@ public class VoirPlusFilm extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         setContentView(R.layout.fragment_emp_list);
         dbManager = new DBManager(this);
@@ -58,6 +58,7 @@ public class VoirPlusFilm extends AppCompatActivity {
                 TextView synopsisTextView = (TextView) view.findViewById(R.id.synopsis);
                 TextView dureeTextView = (TextView) view.findViewById(R.id.duree);
                 TextView noteTextView = (TextView) view.findViewById(R.id.ratings);
+
 
                 String title = titleTextView.getText().toString();
                 String synopsis = synopsisTextView.getText().toString();
