@@ -32,8 +32,8 @@
 
     <ListView
         android:id="@+id/list_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="410dp"
+        android:layout_height="589dp"
         android:dividerHeight="1dp"
         android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@+id/voirTout"
@@ -72,7 +72,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="28dp"
-
+            android:padding="10dp"
             android:text="@string/empty_list_text"
             android:textColor="@color/light_blue"
             android:textSize="20sp"
@@ -80,6 +80,25 @@
 
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewTitre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center|start"
+        android:paddingStart="24dp"
+        android:paddingTop="20dp"
+        android:text="Films tendances :"
+        android:textColor="@color/light_blue"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/list_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageFilm"
