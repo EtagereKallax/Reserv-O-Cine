@@ -82,7 +82,14 @@ public class MainActivity extends AppCompatActivity {
                 String imgF = imgFilm.getDrawable().toString();
 
 
-                Intent modify_intent = new Intent(getApplicationContext(), VoirPlusFilm.class);
+                Intent modify_intent;
+                if(getIntent().getStringExtra("nom") == null) {
+                    modify_intent = new Intent(getApplicationContext(), Connexion.class);
+                }
+                modify_intent = new Intent(getApplicationContext(), VoirPlusFilm.class);
+                modify_intent.putExtra("nom", getIntent().getStringExtra("nom"));
+                modify_intent.putExtra("prenom", getIntent().getStringExtra("prenom"));
+                modify_intent.putExtra("email", getIntent().getStringExtra("email"));
                 modify_intent.putExtra("imgFilm", imgF);
                 modify_intent.putExtra("title", title);
 
@@ -123,6 +130,10 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.AjouterFilm:
                 startActivity(new Intent(this, AjouterFilm.class));
+                return true;
+            case R.id.DestroyDB:
+                DatabaseHelper dbHelper = new DatabaseHelper(this);
+                dbHelper.resetDatabase();
                 return true;
             default:
                 return super.onContextItemSelected(item);

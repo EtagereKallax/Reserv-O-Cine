@@ -71,4 +71,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         onCreate(db);
     }
+
+    public void resetDatabase() {
+        SQLiteDatabase db = getWritableDatabase();
+        // Supprimer les tables existantes (ou effectuer d'autres opérations de réinitialisation)
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_FILMS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
+        // Recréer la structure de la base de données
+        onCreate(db);
+    }
 }

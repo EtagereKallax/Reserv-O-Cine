@@ -21,6 +21,10 @@
         android:title="@string/ajouterFilm"
         app:showAsAction="never">
     </item>
+    <item android:id="@+id/DestroyDB"
+        android:title="Effacer BDD"
+        app:showAsAction="never">
+    </item>
     <item android:id="@+id/quitter"
         android:title="@string/quitter"
         app:showAsAction="never">

@@ -71,10 +71,17 @@ public class VoirPlusFilm extends AppCompatActivity {
                 ImageView imgFilm = (ImageView) view.findViewById(R.id.imageFilm);
                 String imgF = imgFilm.getDrawable().toString();
 
-
-                Intent modify_intent = new Intent(getApplicationContext(), Reserver.class);
-                modify_intent.putExtra("imgFilm", imgF);
-                modify_intent.putExtra("title", title);
+                Intent modify_intent;
+                if(getIntent().getStringExtra("nom") == null) {
+                    modify_intent = new Intent(getApplicationContext(), Connexion.class);
+                } else {
+                    modify_intent = new Intent(getApplicationContext(), MovieReservation.class);
+                    modify_intent.putExtra("nom", getIntent().getStringExtra("nom"));
+                    modify_intent.putExtra("prenom", getIntent().getStringExtra("prenom"));
+                    modify_intent.putExtra("email", getIntent().getStringExtra("email"));
+                    modify_intent.putExtra("imgFilm", imgF);
+                    modify_intent.putExtra("title", title);
+                }
 
                 startActivity(modify_intent);
             }

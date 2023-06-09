@@ -135,7 +135,7 @@ public class DBManager {
     }
 
     public Cursor selectDate(String titre) {
-        String[] columns = new String[] { DatabaseHelper._IDFILMS, DatabaseHelper.TITRE, DatabaseHelper.IMAGE, DatabaseHelper.SYNOPSIS, DatabaseHelper.DUREE, DatabaseHelper.RATINGS };
+        String[] columns = new String[] { DatabaseHelper._IDFILMS, DatabaseHelper.TITRE, DatabaseHelper.IMAGE, DatabaseHelper.DUREE, DatabaseHelper.DATE_SORTIE,  DatabaseHelper.SYNOPSIS, DatabaseHelper.DATE_DEBUT, DatabaseHelper.DATE_FIN, DatabaseHelper.RATINGS };
         String[] args = new String[] { titre };
         Cursor cursor = database.query(DatabaseHelper.TABLE_FILMS, columns, "titre = ?", args, null, null, null);
         if(cursor != null) {
