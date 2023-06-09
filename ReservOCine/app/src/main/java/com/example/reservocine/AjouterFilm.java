@@ -1,13 +1,19 @@
 package com.example.reservocine;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 import android.app.DatePickerDialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.format.Time;
@@ -26,6 +32,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Calendar;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+
 
 public class AjouterFilm extends AppCompatActivity implements View.OnClickListener {
 
@@ -97,6 +106,38 @@ public class AjouterFilm extends AppCompatActivity implements View.OnClickListen
 
                 // Appeler la méthode pour ajouter le film à la base de données
                 ajouterFilm(image, titre, duree, dateSortie, synopsis, dateDebut, dateFin);
+
+
+
+                String CHANNEL_ID = "my_channel_id";
+
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    NotificationChannel notificationChannel =
+                            new NotificationChannel(CHANNEL_ID, "Mascot Notification",
+                                    NotificationManager.IMPORTANCE_DEFAULT);
+                    NotificationManager notificationManager = getSystemService(NotificationManager.class);
+                    notificationManager.createNotificationChannel(notificationChannel);
+                }
+
+                Intent intent = new Intent(AjouterFilm.this, VoirPlusFilm.class);
+                intent.putExtra("title", titre);
+                PendingIntent pendingIntent = PendingIntent.getActivity(AjouterFilm.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+                Notification notification = new NotificationCompat.Builder(AjouterFilm.this, CHANNEL_ID)
+                        .setSmallIcon(R.mipmap.ic_launcher_round)
+                        .setContentTitle("Un nouveau film est disponible!")
+                        .setContentText(titre)
+                        .setContentIntent(pendingIntent)
+                        .build();
+
+                int notificationId = 1; // ID de notification arbitraire
+
+                NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                notificationManager.notify(notificationId, notification);
+
+
 
                 Toast.makeText(AjouterFilm.this, "Film ajouté avec succès", Toast.LENGTH_SHORT).show();
                 finish();
