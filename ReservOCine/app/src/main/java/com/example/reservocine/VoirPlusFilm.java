@@ -7,10 +7,12 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -19,6 +21,9 @@ import java.util.List;
 public class VoirPlusFilm extends AppCompatActivity {
     private DBManager dbManager;
     private ListView listView;
+    private Spinner dateSpinner;
+    private Spinner timeSpinner;
+    private Button reserveButton;
 
     private SimpleCursorAdapter adapter;
 
@@ -67,7 +72,7 @@ public class VoirPlusFilm extends AppCompatActivity {
                 String imgF = imgFilm.getDrawable().toString();
 
 
-                Intent modify_intent = new Intent(getApplicationContext(), VoirPlusFilm.class);
+                Intent modify_intent = new Intent(getApplicationContext(), Reserver.class);
                 modify_intent.putExtra("imgFilm", imgF);
                 modify_intent.putExtra("title", title);
 

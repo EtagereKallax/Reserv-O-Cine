@@ -99,6 +99,7 @@ public class AjouterFilm extends AppCompatActivity implements View.OnClickListen
                 ajouterFilm(image, titre, duree, dateSortie, synopsis, dateDebut, dateFin);
 
                 Toast.makeText(AjouterFilm.this, "Film ajouté avec succès", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
     }
@@ -117,12 +118,8 @@ public class AjouterFilm extends AppCompatActivity implements View.OnClickListen
 
                         @Override
                         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                            if(hourOfDay < 10) {
-                                etDuree.setText("0" + hourOfDay + "h" + minute);
-                            } else if(minute < 10) {
+                            if(minute < 10) {
                                 etDuree.setText(hourOfDay + "h0" + minute);
-                            } else if(hourOfDay < 10 && minute < 10) {
-                                etDuree.setText("0" + hourOfDay + "h0" + minute);
                             } else {
                                 etDuree.setText(hourOfDay + "h" + minute);
                             }
@@ -142,7 +139,15 @@ public class AjouterFilm extends AppCompatActivity implements View.OnClickListen
                         @Override
                         public void onDateSet(DatePicker view, int year,
                                               int monthOfYear, int dayOfMonth) {
-                            etDateSortie.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                            if(dayOfMonth < 10) {
+                                etDateSortie.setText("0" + dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                            } else if (monthOfYear < 10) {
+                                etDateSortie.setText(dayOfMonth + "/" + "0" + (monthOfYear + 1) + "/" + year);
+                            } else if (dayOfMonth < 10 && monthOfYear < 10) {
+                                etDateSortie.setText("0" + dayOfMonth + "/" + "0" + (monthOfYear + 1) + "/" + year);
+                            } else {
+                                etDateSortie.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                            }
                         }
                     }, mYear, mMonth, mDay);
             datePickerDialog.show();
@@ -161,7 +166,41 @@ public class AjouterFilm extends AppCompatActivity implements View.OnClickListen
                                     mHour = hourOfDay;
                                     mMinute = minute;
 
-                                    String selectedDateTime = mDay + "-" + (mMonth + 1) + "-" + mYear + " " + mHour + ":" + mMinute;
+                                    String selectedDateTime = "";
+
+                                    if(mDay < 10) {
+                                        selectedDateTime = "0" + mDay + "/" + (mMonth + 1) + "/" + mYear + " " + mHour + ":" + mMinute;
+                                    } else if(mMonth < 10) {
+                                        selectedDateTime = mDay + "/" + "0" + (mMonth + 1) + "/" + mYear + " " + mHour + ":" + mMinute;
+                                    } else if(mDay < 10 && mMonth < 10) {
+                                        selectedDateTime = "0" + mDay + "/" + "0" + (mMonth + 1) + "/" + mYear + " " + mHour + ":" + mMinute;
+                                    } else if(mHour < 10) {
+                                        selectedDateTime = mDay + "/" + (mMonth + 1) + "/" + mYear + " 0" + mHour + ":" + mMinute;
+                                    } else if(mDay < 10 && mHour < 10) {
+                                        selectedDateTime = "0" + mDay + "/" + (mMonth + 1) + "/" + mYear + " 0" + mHour + ":" + mMinute;
+                                    } else if(mMonth < 10 && mHour < 10) {
+                                        selectedDateTime = mDay + "/0" + (mMonth + 1) + "/" + mYear + " 0" + mHour + ":" + mMinute;
+                                    } else if(mDay < 10 && mMonth < 10 && mHour < 10) {
+                                        selectedDateTime = "0" + mDay + "/0" + (mMonth + 1) + "/" + mYear + " 0" + mHour + ":" + mMinute;
+                                    } else if(mMinute < 10) {
+                                        selectedDateTime = mDay + "/" + (mMonth + 1) + "/" + mYear + " " + mHour + ":0" + mMinute;
+                                    } else if(mDay < 10 && mMinute < 10) {
+                                        selectedDateTime = "0" + mDay + "/" + (mMonth + 1) + "/" + mYear + " " + mHour + ":0" + mMinute;
+                                    } else if(mMonth < 10 && mMinute < 10) {
+                                        selectedDateTime = mDay + "/0" + (mMonth + 1) + "/" + mYear + " " + mHour + ":0" + mMinute;
+                                    } else if(mDay < 10 && mMonth < 10 && mMinute < 10) {
+                                        selectedDateTime = "0" + mDay + "/0" + (mMonth + 1) + "/" + mYear + " " + mHour + ":0" + mMinute;
+                                    } else if(mHour < 10 && mMinute < 10) {
+                                        selectedDateTime = mDay + "/" + (mMonth + 1) + "/" + mYear + " 0" + mHour + ":0" + mMinute;
+                                    } else if(mDay < 10 && mHour < 10 && mMinute < 10) {
+                                        selectedDateTime = "0" + mDay + "/" + (mMonth + 1) + "/" + mYear + " 0" + mHour + ":0" + mMinute;
+                                    } else if(mMonth < 10 && mHour < 10 && mMinute < 10) {
+                                        selectedDateTime = mDay + "/0" + (mMonth + 1) + "/" + mYear + " 0" + mHour + ":0" + mMinute;
+                                    } else if(mDay < 10 && mMonth < 10 && mHour < 10 && mMinute < 10) {
+                                        selectedDateTime = "0" + mDay + "/0" + (mMonth + 1) + "/" + mYear + " 0" + mHour + ":0" + mMinute;
+                                    } else {
+                                        selectedDateTime = mDay + "/" + (mMonth + 1) + "/" + mYear + " " + mHour + ":" + mMinute;
+                                    }
 
                                     if(v == btnDateDebut) {
                                         etDateDebut.setText(selectedDateTime);

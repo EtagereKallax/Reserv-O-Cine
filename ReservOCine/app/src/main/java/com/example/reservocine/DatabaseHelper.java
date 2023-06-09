@@ -28,6 +28,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String EMAIL = "email";
     public static final String PASSWORD = "password";
 
+    public static final String TABLE_RESERV = "reservation";
+
+
     // Database Information
     static final String DB_NAME = "ReservOCine";
 
