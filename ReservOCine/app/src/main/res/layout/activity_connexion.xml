@@ -13,30 +13,55 @@
         android:background="@color/dark_blue"
         android:padding="16dp">
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Connexion"
+            android:layout_marginBottom="32dp"
+            android:textColor="@color/light_blue"
+            android:textSize="38dp" />
+
         <EditText
             android:id="@+id/etMail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:inputType="textEmailAddress"/>
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/edittext"
+            android:inputType="textEmailAddress"
+            android:padding="16dp"/>
 
         <EditText
             android:id="@+id/etMdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Mot de passe"
-            android:inputType="textPassword"/>
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/edittext"
+            android:inputType="textPassword"
+            android:padding="16dp"/>
 
         <Button
             android:id="@+id/btnConnecter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bouton_rond"
+            android:textSize="20dp"
+            android:textStyle="bold"
             android:text="Se connecter"/>
 
         <Button
             android:id="@+id/btnInscription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bouton_rond"
+            android:textSize="20dp"
+            android:textStyle="bold"
             android:text="S'inscrire"/>
 
     </LinearLayout>

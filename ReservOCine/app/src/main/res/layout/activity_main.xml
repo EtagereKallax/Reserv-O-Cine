@@ -5,31 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
+    android:paddingTop="16dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="16dp"
     tools:context=".MainActivity">
-
-
-    <Button
-        android:id="@+id/AjouterFilm"
-        android:layout_width="247dp"
-        android:layout_height="68dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/bouton_rond"
-        android:text="Ajouter un film"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_view" />
-
-
-    <ListView
-        android:id="@+id/list_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:dividerHeight="1dp"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"></ListView>
 
     <ImageView
         android:id="@+id/emptyIMG"
@@ -37,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        app:layout_constraintBottom_toTopOf="@+id/list_view"></ImageView>
+        app:layout_constraintBottom_toTopOf="@+id/list_view" />
 
     <TextView
         android:id="@+id/empty"
@@ -51,17 +30,39 @@
         app:layout_constraintStart_toStartOf="@+id/list_view"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="410dp"
+        android:layout_height="589dp"
+        android:dividerHeight="1dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/voirTout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/voirTout"
+        android:layout_width="247dp"
+        android:layout_height="68dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bouton_rond"
+        android:text="Voir tout les films"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="289dp"
-        android:layout_height="145dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/divfilm"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/imageFilm"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintTop_toBottomOf="@+id/AjouterFilm"
+        app:layout_constraintTop_toBottomOf="@+id/voirTout"
         app:layout_constraintVertical_bias="0.121">
 
         <TextView
@@ -71,7 +72,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="28dp"
-
+            android:padding="10dp"
             android:text="@string/empty_list_text"
             android:textColor="@color/light_blue"
             android:textSize="20sp"
@@ -80,10 +81,29 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textViewTitre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center|start"
+        android:paddingStart="24dp"
+        android:paddingTop="20dp"
+        android:text="Films tendances :"
+        android:textColor="@color/light_blue"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/list_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/imageFilm"
-        android:layout_width="151dp"
-        android:layout_height="153dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/bouton_rond"
         android:minWidth="120dp"

@@ -4,58 +4,96 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/dark_blue"
     tools:context=".Inscription">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:layout_marginBottom="24dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Inscription"
+            android:layout_marginBottom="32dp"
+            android:textColor="@color/light_blue"
+            android:textSize="38dp"
+            app:layout_constraintBottom_toBottomOf="@+id/etNom" />
 
         <EditText
             android:id="@+id/etNom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nom"/>
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/edittext"
+            android:hint="Nom"
+            android:padding="16dp" />
 
         <EditText
             android:id="@+id/etPrenom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Prénom"/>
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/edittext"
+            android:hint="Prénom"
+            android:padding="16dp" />
 
         <EditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/edittext"
             android:hint="Email"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress"
+            android:padding="16dp" />
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/etPassword"
-            android:hint="Mot de passe"
-            android:inputType="textPassword"/>
-
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/edittext"
+            android:hint="Mot de passe"
+            android:inputType="textPassword"
+            android:padding="16dp" />
+
+        <EditText
             android:id="@+id/etConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/edittext"
             android:hint="Confirmer le mot de passe"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:padding="16dp" />
 
         <Button
             android:id="@+id/btnInscrire"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="S'Inscrire"/>
+            android:layout_marginTop="64dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bouton_rond"
+            android:text="S'Inscrire"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:toggleCheckedStateOnClick="false" />
 
         <Button
             android:id="@+id/btnConnexion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Se connecter"/>
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bouton_rond"
+            android:text="Se connecter"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

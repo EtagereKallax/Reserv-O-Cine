@@ -21,7 +21,7 @@
 
         <TextView
             android:id="@+id/titre"
-            android:layout_width="wrap_content"
+            android:layout_width="351dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
@@ -29,7 +29,11 @@
             android:text="@string/empty_list_text"
             android:textColor="@color/light_blue"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintStart_toEndOf="@+id/imageFilm"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
 
     </LinearLayout>
@@ -75,7 +79,6 @@
         android:id="@+id/duree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
         android:layout_marginBottom="8dp"
         android:text="@string/empty_list_text"
         android:textColor="@color/light_blue"
@@ -106,6 +109,16 @@
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/synopsis" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="79dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
