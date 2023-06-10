@@ -62,8 +62,11 @@ public class DBManager {
     } */
 
     /* public void delete(long _id) {
-        database.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper._ID + "=" + _id, null);
+zz        database.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper._ID + "=" + _id, null);
     } */
+
+
+
 
     public void ajouterFilm(String image, String titre, String duree, String dateSortie, String synopsis, String dateDebut, String dateFin, double ratings) {
         ContentValues values = new ContentValues();
@@ -88,6 +91,8 @@ public class DBManager {
         return cursor;
     }
 
+
+    
     public Cursor selectFilmVoirTout() {
         String[] columns = new String[] { DatabaseHelper._IDFILMS, DatabaseHelper.TITRE, DatabaseHelper.IMAGE, DatabaseHelper.SYNOPSIS, DatabaseHelper.DUREE, DatabaseHelper.RATINGS };
         Cursor cursor = database.query(DatabaseHelper.TABLE_FILMS, columns, null, null, null, null, DatabaseHelper.DATE_SORTIE);

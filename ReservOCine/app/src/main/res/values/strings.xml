@@ -9,4 +9,6 @@
     <string name="empty_list_text"></string>
     <string name="connexion">Connexion</string>
     <string name="ajouterFilm">Ajouter film</string>
+    <string name="channel_name">Channel</string>
+    <string name="channel_description">Channel description</string>
 </resources>
