@@ -144,4 +144,13 @@ public class DBManager {
         return cursor;
     }
 
+    public void reserve(String name, String surname, String film, String date, String time) {
+        ContentValues values = new ContentValues();
+        values.put(DatabaseHelper.NAME, name);
+        values.put(DatabaseHelper.SURNAME, surname);
+        values.put(DatabaseHelper.FILM, film);
+        values.put(DatabaseHelper.DATE, date);
+        values.put(DatabaseHelper.TIME, time);
+        database.insert(DatabaseHelper.TABLE_RESERV, null, values);
+    }
 }

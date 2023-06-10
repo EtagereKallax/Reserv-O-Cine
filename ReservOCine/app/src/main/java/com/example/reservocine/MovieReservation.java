@@ -76,15 +76,14 @@ public class MovieReservation extends AppCompatActivity implements AdapterView.O
                 // Handle reservation button click
                 String selectedDate = dateSpinner.getSelectedItem().toString();
                 String selectedTime = timeSpinner.getSelectedItem().toString();
-                saveReservationToDatabase(selectedDate, selectedTime);
+                saveReservationToDatabase(getIntent().getStringExtra("nom"), getIntent().getStringExtra("prenom"), getIntent().getStringExtra("title"), selectedDate, selectedTime);
             }
         });
     }
 
-    private void saveReservationToDatabase(String date, String time) {
-        // Code to save reservation details to the database
-        // TODO: Implement database integration
-        Toast.makeText(this, "Reservation saved " + date + ", " + time, Toast.LENGTH_SHORT).show();
+    private void saveReservationToDatabase(String name, String surname, String film, String date, String time) {
+        dbManager.reserve(name, surname, film, date, time);
+        Toast.makeText(this, "Vous avez réserver pour le film " + film + " pour le " + date + " à " + time, Toast.LENGTH_SHORT).show();
     }
 
     @Override

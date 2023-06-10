@@ -30,6 +30,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_RESERV = "reservation";
 
+    public static final String _IDRESERV = "_idreserv";
+    public static final String NAME = "name";
+    public static final String SURNAME = "surname";
+    public static final String FILM = "film";
+    public static final String DATE = "date";
+    public static final String TIME = "time";
+
 
     // Database Information
     static final String DB_NAME = "ReservOCine";
@@ -55,6 +62,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             EMAIL + " TEXT UNIQUE NOT NULL, " +
             PASSWORD + " TEXT NOT NULL);";
 
+    private static final String CREATE_TABLE_RESERV = "create table " + TABLE_RESERV + "(" +
+            _IDRESERV + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            NAME + " TEXT NOT NULL, " +
+            SURNAME + " TEXT NOT NULL, " +
+            FILM + " TEXT NOT NULL, " +
+            DATE + " TEXT NOT NULL, " +
+            TIME + " TEXT NOT NULL);";
+
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
@@ -63,12 +78,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_FILMS);
         db.execSQL(CREATE_TABLE_USER);
+        db.execSQL(CREATE_TABLE_RESERV);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_FILMS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_RESERV);
         onCreate(db);
     }
 
@@ -77,6 +94,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Supprimer les tables existantes (ou effectuer d'autres opérations de réinitialisation)
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_FILMS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_RESERV);
         // Recréer la structure de la base de données
         onCreate(db);
     }
