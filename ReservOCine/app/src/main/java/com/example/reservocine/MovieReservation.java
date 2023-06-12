@@ -51,7 +51,8 @@ public class MovieReservation extends AppCompatActivity implements AdapterView.O
             throw new RuntimeException(e);
         }
 
-        ArrayAdapter<String> dateAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, dateList);
+        ArrayAdapter<String> dateAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, dateList);
         dateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dateSpinner.setAdapter(dateAdapter);
 
@@ -62,7 +63,8 @@ public class MovieReservation extends AppCompatActivity implements AdapterView.O
         timeList.add("17:30");
         timeList.add("21:00");
 
-        ArrayAdapter<String> timeAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, timeList);
+        ArrayAdapter<String> timeAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, timeList);
         timeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         timeSpinner.setAdapter(timeAdapter);
 
@@ -77,7 +79,11 @@ public class MovieReservation extends AppCompatActivity implements AdapterView.O
                 // Handle reservation button click
                 String selectedDate = dateSpinner.getSelectedItem().toString();
                 String selectedTime = timeSpinner.getSelectedItem().toString();
-                saveReservationToDatabase(getIntent().getStringExtra("nom"), getIntent().getStringExtra("prenom"), getIntent().getStringExtra("imgFilm"), getIntent().getStringExtra("title"), selectedDate, selectedTime);
+                saveReservationToDatabase(getIntent().getStringExtra("nom"),
+                        getIntent().getStringExtra("prenom"),
+                        getIntent().getStringExtra("imgFilm"),
+                        getIntent().getStringExtra("title"),
+                        selectedDate, selectedTime);
             }
         });
     }
