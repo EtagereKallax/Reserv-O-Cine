@@ -22,6 +22,8 @@
         <activity
             android:name=".TousLesFilms"
             android:exported="false" />
+        <activity android:name=".MovieReservation"
+            android:exported="false" />
         <activity
             android:name=".AjouterFilm"
             android:exported="false" />

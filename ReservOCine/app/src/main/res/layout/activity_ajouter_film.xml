@@ -19,19 +19,27 @@
             android:id="@+id/etTitre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/edittext"
+            android:padding="16dp"
+            android:layout_marginBottom="32dp"
             android:hint="Titre" />
 
         <Button
             android:id="@+id/btnUpload"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/bouton_rond"
+            android:layout_marginBottom="8dp"
             android:text="Upload Image" />
 
         <EditText
             android:id="@+id/etImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/edittext"
             android:enabled="false"
+            android:padding="16dp"
+            android:layout_marginBottom="32dp"
             android:hint="Image Path" />
 
         <LinearLayout
@@ -43,13 +51,17 @@
                 android:id="@+id/etDuree"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
+                android:background="@drawable/edittext"
                 android:hint="Durée"
+                android:paddingLeft="16dp"
+                android:layout_marginEnd="16dp"
                 android:enabled="false" />
 
             <Button
                 android:id="@+id/btnDuree"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:background="@drawable/bouton_rond"
                 android:text="Choisir durée" />
 
         </LinearLayout>
@@ -57,19 +69,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="32dp">
 
             <EditText
                 android:id="@+id/etDateSortie"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
+                android:background="@drawable/edittext"
                 android:hint="Date de sortie"
+                android:paddingLeft="16dp"
+                android:layout_marginEnd="16dp"
                 android:enabled="false" />
 
             <Button
                 android:id="@+id/btnDateSortie"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:background="@drawable/bouton_rond"
                 android:text="Choisir la date de sortie" />
 
         </LinearLayout>
@@ -78,24 +95,32 @@
             android:id="@+id/etSynopsis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/edittext"
+            android:padding="16dp"
+            android:layout_marginTop="32dp"
             android:hint="Synopsis" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="32dp">
 
-            <EditText
+        <EditText
                 android:id="@+id/etDateDebut"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:hint="Début de disponibilité"
+                android:background="@drawable/edittext"
+                android:paddingLeft="16dp"
+                android:layout_marginEnd="16dp"
                 android:enabled="false" />
 
             <Button
                 android:id="@+id/btnDateDebut"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:background="@drawable/bouton_rond"
                 android:text="Choisir le début de disponibilité" />
 
         </LinearLayout>
@@ -103,19 +128,25 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="32dp">
 
-            <EditText
+
+        <EditText
                 android:id="@+id/etDateFin"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:hint="Fin de disponibilité"
+                android:background="@drawable/edittext"
+                android:paddingLeft="16dp"
+                android:layout_marginEnd="16dp"
                 android:enabled="false" />
 
             <Button
                 android:id="@+id/btnDateFin"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:background="@drawable/bouton_rond"
                 android:text="Choisir la fin de disponibilité" />
 
         </LinearLayout>
@@ -124,7 +155,9 @@
             android:id="@+id/btnAjouter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ajouter" />
+            android:text="Ajouter"
+            android:background="@drawable/bouton_rond"
+            android:layout_marginTop="32dp"/>
     </LinearLayout>
 
 
