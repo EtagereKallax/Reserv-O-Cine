@@ -26,8 +26,8 @@
 
         <ImageView
             android:id="@+id/imgFilm"
-            android:layout_width="151dp"
-            android:layout_height="153dp"
+            android:layout_width="156dp"
+            android:layout_height="143dp"
             android:layout_marginTop="30dp"
             android:background="@drawable/bouton_rond"
             android:minWidth="120dp" />
@@ -36,10 +36,8 @@
             android:id="@+id/img"
             android:layout_width="178dp"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:text=""
-            android:textColor="#00FFFFFF" />
+            android:textColor="#00FFFFFF"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -50,19 +48,22 @@
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="" />
+                android:text=""
+                android:textColor="@color/light_blue"/>
 
             <TextView
                 android:id="@+id/date_reserv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="" />
+                android:text=""
+                android:textColor="@color/light_blue"/>
 
             <TextView
                 android:id="@+id/time_reserv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="" />
+                android:text=""
+                android:textColor="@color/light_blue"/>
 
         </LinearLayout>
 
