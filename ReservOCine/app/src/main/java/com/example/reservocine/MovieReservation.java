@@ -106,25 +106,36 @@ public class MovieReservation extends AppCompatActivity implements AdapterView.O
     private List<String> selectDates(String titre) throws ParseException {
         Cursor date = dbManager.selectDate(titre);
         List<String> dates = new ArrayList<>();
-        String date_debut;
-        String date_fin;
-        date_debut = date.getString(6).substring(0, 10);
-        dates.add(date_debut);
-        date_fin = date.getString(7).substring(0, 10);
-        Date debut = new SimpleDateFormat("dd/MM/yyyy").parse(date_debut);
-        Date fin = new SimpleDateFormat("dd/MM/yyyy").parse(date_fin);
+        String date_debut = date.getString(6);
+        String date_fin = date.getString(7);
 
-        long nbJours = TimeUnit.DAYS.convert(fin.getTime() - debut.getTime(), TimeUnit.MILLISECONDS);
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        for(int i = 1; i < nbJours; i++) {
-            calendar.setTime(debut);
-            calendar.add(Calendar.DAY_OF_YEAR, i);
-            dates.add(sdf.format(calendar.getTime()));
+        if (date_debut.length() >= 10) {
+            date_debut = date_debut.substring(0, 10);
+            dates.add(date_debut);
+        }
+
+        if (date_fin.length() >= 10) {
+            date_fin = date_fin.substring(0, 10);
+            dates.add(date_fin);
+        }
+
+        if (dates.size() == 2) {
+            Date debut = new SimpleDateFormat("dd/MM/yyyy").parse(date_debut);
+            Date fin = new SimpleDateFormat("dd/MM/yyyy").parse(date_fin);
+
+            long nbJours = TimeUnit.DAYS.convert(fin.getTime() - debut.getTime(), TimeUnit.MILLISECONDS);
+            Calendar calendar = Calendar.getInstance();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            for(int i = 1; i < nbJours; i++) {
+                calendar.setTime(debut);
+                calendar.add(Calendar.DAY_OF_YEAR, i);
+                dates.add(sdf.format(calendar.getTime()));
+            }
         }
 
         return dates;
     }
+
 
     /*
     private List<String> selectTimes(String titre) {
