@@ -34,6 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String NAME = "name";
     public static final String SURNAME = "surname";
     public static final String FILM = "film";
+    public static final String TITLE = "title";
     public static final String DATE = "date";
     public static final String TIME = "time";
 
@@ -67,6 +68,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             NAME + " TEXT NOT NULL, " +
             SURNAME + " TEXT NOT NULL, " +
             FILM + " TEXT NOT NULL, " +
+            TITLE + " TEXT NOT NULL, " +
             DATE + " TEXT NOT NULL, " +
             TIME + " TEXT NOT NULL);";
 

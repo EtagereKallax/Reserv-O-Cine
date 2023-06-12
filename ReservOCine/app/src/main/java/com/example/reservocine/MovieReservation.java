@@ -2,6 +2,7 @@ package com.example.reservocine;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -76,14 +77,20 @@ public class MovieReservation extends AppCompatActivity implements AdapterView.O
                 // Handle reservation button click
                 String selectedDate = dateSpinner.getSelectedItem().toString();
                 String selectedTime = timeSpinner.getSelectedItem().toString();
-                saveReservationToDatabase(getIntent().getStringExtra("nom"), getIntent().getStringExtra("prenom"), getIntent().getStringExtra("title"), selectedDate, selectedTime);
+                saveReservationToDatabase(getIntent().getStringExtra("nom"), getIntent().getStringExtra("prenom"), getIntent().getStringExtra("imgFilm"), getIntent().getStringExtra("title"), selectedDate, selectedTime);
             }
         });
     }
 
-    private void saveReservationToDatabase(String name, String surname, String film, String date, String time) {
-        dbManager.reserve(name, surname, film, date, time);
+    private void saveReservationToDatabase(String name, String surname, String film, String title, String date, String time) {
+        dbManager.reserve(name, surname, film, title, date, time);
         Toast.makeText(this, "Vous avez réserver pour le film " + film + " pour le " + date + " à " + time, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(MovieReservation.this, MesReservations.class);
+        intent.putExtra("nom", name);
+        intent.putExtra("prenom", surname);
+        intent.putExtra("email", getIntent().getStringExtra("email"));
+        startActivity(intent);
+        finish();
     }
 
     @Override
