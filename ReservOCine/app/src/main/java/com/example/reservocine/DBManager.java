@@ -149,13 +149,24 @@ zz        database.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper._ID + "=" + 
         return cursor;
     }
 
-    public void reserve(String name, String surname, String film, String date, String time) {
+    public void reserve(String name, String surname, String film, String title, String date, String time) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.NAME, name);
         values.put(DatabaseHelper.SURNAME, surname);
         values.put(DatabaseHelper.FILM, film);
+        values.put(DatabaseHelper.TITLE, title);
         values.put(DatabaseHelper.DATE, date);
         values.put(DatabaseHelper.TIME, time);
         database.insert(DatabaseHelper.TABLE_RESERV, null, values);
+    }
+
+    public Cursor selectReserv(String nom, String prenom) {
+        String[] columns = new String[] { DatabaseHelper._IDRESERV, DatabaseHelper.FILM, DatabaseHelper.TITLE, DatabaseHelper.DATE, DatabaseHelper.TIME };
+        String[] args = new String[] { nom, prenom };
+        Cursor cursor = database.query(DatabaseHelper.TABLE_RESERV, columns, "name = ? AND surname = ?", args, null, null, null);
+        if(cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
     }
 }
