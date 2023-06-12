@@ -18,9 +18,6 @@
             android:name=".MesReservations"
             android:exported="false" />
         <activity
-            android:name=".Reserver"
-            android:exported="false" />
-        <activity
             android:name=".VoirPlusFilm"
             android:exported="false" />
         <activity

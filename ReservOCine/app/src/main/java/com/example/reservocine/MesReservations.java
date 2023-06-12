@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MesReservations extends AppCompatActivity {
 
@@ -61,5 +64,76 @@ public class MesReservations extends AppCompatActivity {
                 startActivity(qrcode_intent);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.reservations:
+                if(getIntent().getStringExtra("nom") == null) {
+                    intent = new Intent(this, Connexion.class);
+                } else {
+                    intent = new Intent(this, MesReservations.class);
+                    intent.putExtra("nom", getIntent().getStringExtra("nom"));
+                    intent.putExtra("prenom", getIntent().getStringExtra("prenom"));
+                    intent.putExtra("email", getIntent().getStringExtra("email"));
+                }
+                startActivity(intent);
+                return true;
+            case R.id.accueil:
+                intent = new Intent(this, MainActivity.class);
+                if(getIntent().getStringExtra("nom") == null) {
+                    startActivity(intent);
+                } else {
+                    intent.putExtra("nom", getIntent().getStringExtra("nom"));
+                    intent.putExtra("prenom", getIntent().getStringExtra("prenom"));
+                    intent.putExtra("email", getIntent().getStringExtra("email"));
+                    startActivity(intent);
+                }
+                return true;
+            case R.id.quitter:
+                finish();
+            case R.id.films:
+                intent = new Intent(this, TousLesFilms.class);
+                if(getIntent().getStringExtra("nom") == null) {
+                    startActivity(intent);
+                } else {
+                    intent.putExtra("nom", getIntent().getStringExtra("nom"));
+                    intent.putExtra("prenom", getIntent().getStringExtra("prenom"));
+                    intent.putExtra("email", getIntent().getStringExtra("email"));
+                    startActivity(intent);
+                }
+                return true;
+            case R.id.connexion:
+                if(getIntent().getStringExtra("nom") == null) {
+                    startActivity(new Intent(this, Connexion.class));
+                } else {
+                    Toast.makeText(this, "Vous êtes déjà connecté", Toast.LENGTH_SHORT).show();
+                }
+                return true;
+            case R.id.AjouterFilm:
+                if(getIntent().getStringExtra("nom") == null) {
+                    intent = new Intent(this, Connexion.class);
+                    startActivity(intent);
+                } else if(getIntent().getStringExtra("nom") != "admin" && getIntent().getStringExtra("prenom") == "admin" && getIntent().getStringExtra("email") == "admin@gmail.com") {
+                    Toast.makeText(this, "En tant qu'utilisateur, vous ne pouvez pas accéder à cette fonctionnalité", Toast.LENGTH_SHORT).show();
+                } else {
+                    intent = new Intent(this, AjouterFilm.class);
+                    intent.putExtra("nom", getIntent().getStringExtra("nom"));
+                    intent.putExtra("prenom", getIntent().getStringExtra("prenom"));
+                    intent.putExtra("email", getIntent().getStringExtra("email"));
+                    startActivity(intent);
+                }
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
     }
 }

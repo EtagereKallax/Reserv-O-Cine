@@ -174,10 +174,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 return true;
-            case R.id.DestroyDB:
-                DatabaseHelper dbHelper = new DatabaseHelper(this);
-                dbHelper.resetDatabase();
-                return true;
             default:
                 return super.onContextItemSelected(item);
         }
