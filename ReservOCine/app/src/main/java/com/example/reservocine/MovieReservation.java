@@ -51,8 +51,13 @@ public class MovieReservation extends AppCompatActivity implements AdapterView.O
             throw new RuntimeException(e);
         }
 
+        String imgFilm = "/data/user/0/com.example.reservocine/files/" +
+                getIntent().getStringExtra("title") +
+                ".jpg";
+
         ArrayAdapter<String> dateAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, dateList);
+                android.R.layout.simple_spinner_item,
+                dateList);
         dateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dateSpinner.setAdapter(dateAdapter);
 
