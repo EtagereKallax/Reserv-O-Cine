@@ -30,7 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_RESERV = "reservation";
 
-    public static final String _IDRESERV = "_idreserv";
+    public static final String _IDRESERV = "_id";
     public static final String NAME = "name";
     public static final String SURNAME = "surname";
     public static final String FILM = "film";

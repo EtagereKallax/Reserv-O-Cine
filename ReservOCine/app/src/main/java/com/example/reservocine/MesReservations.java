@@ -20,9 +20,9 @@ public class MesReservations extends AppCompatActivity {
     private SimpleCursorAdapter adapter;
 
     final String[] from = new String[] {
-            DatabaseHelper.FILM, DatabaseHelper.TITLE, DatabaseHelper.DATE, DatabaseHelper.TIME };
+            DatabaseHelper.FILM, DatabaseHelper.FILM, DatabaseHelper.TITLE, DatabaseHelper.DATE, DatabaseHelper.TIME };
 
-    final int[] to = {R.id.imgFilm, R.id.title, R.id.date_reserv, R.id.time_reserv};
+    final int[] to = {R.id.img, R.id.imgFilm, R.id.title, R.id.date_reserv, R.id.time_reserv};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +51,8 @@ public class MesReservations extends AppCompatActivity {
                 String title = titleTextView.getText().toString();
                 String date = dateTextView.getText().toString();
                 String time = timeTextView.getText().toString();
+
+                ImageView
 
                 Intent qrcode_intent = new Intent(getApplicationContext(), QRCode.class);
                 qrcode_intent.putExtra("nom", getIntent().getStringExtra("nom"));
