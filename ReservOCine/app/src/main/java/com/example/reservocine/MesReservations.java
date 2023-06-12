@@ -52,8 +52,6 @@ public class MesReservations extends AppCompatActivity {
                 String date = dateTextView.getText().toString();
                 String time = timeTextView.getText().toString();
 
-                ImageView
-
                 Intent qrcode_intent = new Intent(getApplicationContext(), QRCode.class);
                 qrcode_intent.putExtra("nom", getIntent().getStringExtra("nom"));
                 qrcode_intent.putExtra("prenom", getIntent().getStringExtra("prenom"));
