@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.reservations:
-                startActivity(new Intent(this, QRCode.class));
+                startActivity(new Intent(this, MesReservations.class));
                 return true;
             case R.id.accueil:
                 startActivity(new Intent(this, MainActivity.class));

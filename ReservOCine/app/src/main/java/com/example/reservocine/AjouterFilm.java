@@ -17,6 +17,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.format.Time;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -304,5 +306,41 @@ public class AjouterFilm extends AppCompatActivity implements View.OnClickListen
             Toast.makeText(this, "Erreur lors de l'enregistrement de l'image", Toast.LENGTH_SHORT).show();
         }
         return "";
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.reservations:
+                startActivity(new Intent(this, MesReservations.class));
+                return true;
+            case R.id.accueil:
+                startActivity(new Intent(this, MainActivity.class));
+                return true;
+            case R.id.quitter:
+                finish();
+            case R.id.films:
+                startActivity(new Intent(this, TousLesFilms.class));
+                return true;
+            case R.id.connexion:
+                startActivity(new Intent(this, Connexion.class));
+                return true;
+            case R.id.AjouterFilm:
+                startActivity(new Intent(this, AjouterFilm.class));
+                return true;
+            case R.id.DestroyDB:
+                DatabaseHelper dbHelper = new DatabaseHelper(this);
+                dbHelper.resetDatabase();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
     }
 }
