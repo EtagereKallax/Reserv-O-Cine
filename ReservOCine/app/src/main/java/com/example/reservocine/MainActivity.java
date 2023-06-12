@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -115,23 +116,63 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         switch (item.getItemId()) {
             case R.id.reservations:
-                startActivity(new Intent(this, MesReservations.class));
+                if(getIntent().getStringExtra("nom") == null) {
+                    intent = new Intent(this, Connexion.class);
+                } else {
+                    intent = new Intent(this, MesReservations.class);
+                    intent.putExtra("nom", getIntent().getStringExtra("nom"));
+                    intent.putExtra("prenom", getIntent().getStringExtra("prenom"));
+                    intent.putExtra("email", getIntent().getStringExtra("email"));
+                }
+                startActivity(intent);
                 return true;
             case R.id.accueil:
-                startActivity(new Intent(this, MainActivity.class));
+                intent = new Intent(this, MainActivity.class);
+                if(getIntent().getStringExtra("nom") == null) {
+                    startActivity(intent);
+                } else {
+                    intent.putExtra("nom", getIntent().getStringExtra("nom"));
+                    intent.putExtra("prenom", getIntent().getStringExtra("prenom"));
+                    intent.putExtra("email", getIntent().getStringExtra("email"));
+                    startActivity(intent);
+                }
                 return true;
             case R.id.quitter:
                 finish();
             case R.id.films:
-                startActivity(new Intent(this, TousLesFilms.class));
+                intent = new Intent(this, TousLesFilms.class);
+                if(getIntent().getStringExtra("nom") == null) {
+                    startActivity(intent);
+                } else {
+                    intent.putExtra("nom", getIntent().getStringExtra("nom"));
+                    intent.putExtra("prenom", getIntent().getStringExtra("prenom"));
+                    intent.putExtra("email", getIntent().getStringExtra("email"));
+                    startActivity(intent);
+                }
                 return true;
             case R.id.connexion:
-                startActivity(new Intent(this, Connexion.class));
+                if(getIntent().getStringExtra("nom") == null) {
+                    startActivity(new Intent(this, Connexion.class));
+                } else {
+                    Toast.makeText(this, "Vous êtes déjà connecté", Toast.LENGTH_SHORT).show();
+                }
                 return true;
             case R.id.AjouterFilm:
-                startActivity(new Intent(this, AjouterFilm.class));
+                if(getIntent().getStringExtra("nom") == null) {
+                    intent = new Intent(this, Connexion.class);
+                    startActivity(intent);
+                } else if(getIntent().getStringExtra("nom") != "admin" && getIntent().getStringExtra("prenom") == "admin" && getIntent().getStringExtra("email") == "admin@gmail.com") {
+                    Toast.makeText(this, "En tant qu'utilisateur, vous ne pouvez pas accéder à cette fonctionnalité", Toast.LENGTH_SHORT).show();
+                } else {
+                    intent = new Intent(this, AjouterFilm.class);
+                    intent.putExtra("nom", getIntent().getStringExtra("nom"));
+                    intent.putExtra("prenom", getIntent().getStringExtra("prenom"));
+                    intent.putExtra("email", getIntent().getStringExtra("email"));
+                    startActivity(intent);
+                }
                 return true;
             case R.id.DestroyDB:
                 DatabaseHelper dbHelper = new DatabaseHelper(this);

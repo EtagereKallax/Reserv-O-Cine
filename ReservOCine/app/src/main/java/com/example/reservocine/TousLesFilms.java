@@ -68,19 +68,17 @@ public class TousLesFilms extends AppCompatActivity {
                 String imgF = imgFilm.getDrawable().toString();
 
 
-                Intent modify_intent;
+                Intent modify_intent = new Intent(getApplicationContext(), VoirPlusFilm.class);
                 if(getIntent().getStringExtra("nom") == null) {
-                    modify_intent = new Intent(getApplicationContext(), Connexion.class);
+                    startActivity(modify_intent);
                 } else {
-                    modify_intent = new Intent(getApplicationContext(), VoirPlusFilm.class);
                     modify_intent.putExtra("nom", getIntent().getStringExtra("nom"));
                     modify_intent.putExtra("prenom", getIntent().getStringExtra("prenom"));
                     modify_intent.putExtra("email", getIntent().getStringExtra("email"));
                     modify_intent.putExtra("imgFilm", imgF);
                     modify_intent.putExtra("title", title);
+                    startActivity(modify_intent);
                 }
-
-                startActivity(modify_intent);
             }
         });
 

@@ -161,7 +161,7 @@ zz        database.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper._ID + "=" + 
     }
 
     public Cursor selectReserv(String nom, String prenom) {
-        String[] columns = new String[] { DatabaseHelper._IDRESERV, DatabaseHelper.FILM, DatabaseHelper.TITLE, DatabaseHelper.DATE, DatabaseHelper.TIME };
+        String[] columns = new String[] { DatabaseHelper.FILM, DatabaseHelper.TITLE, DatabaseHelper.DATE, DatabaseHelper.TIME };
         String[] args = new String[] { nom, prenom };
         Cursor cursor = database.query(DatabaseHelper.TABLE_RESERV, columns, "name = ? AND surname = ?", args, null, null, null);
         if(cursor != null) {

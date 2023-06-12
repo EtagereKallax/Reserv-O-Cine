@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -25,13 +26,13 @@ public class QRCode extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrcode);
-        //Button for generating QR code
-        Button btnGenerate = findViewById(R.id.btnGenerate);
         //Text will be entered here to generate QR code
-        EditText etText = findViewById(R.id.etText);
+        TextView tvText = findViewById(R.id.tvText);
         //ImageView for generated QR code
         ImageView imageCode = findViewById(R.id.imageCode);
-        btnGenerate.setOnClickListener(v -> {
+
+        tvText.setText(getIntent().getStringExtra("titre") + ", le " + getIntent().getStringExtra("date") + " à " + getIntent().getStringExtra("time"));
+        /*btnGenerate.setOnClickListener(v -> {
             //getting text from input text field.
             String myText = etText.getText().toString().trim();
             //initializing MultiFormatWriter for QR code
@@ -48,7 +49,21 @@ public class QRCode extends AppCompatActivity {
             } catch (WriterException e) {
                 e.printStackTrace();
             }
-        });
+        });*/
+
+        // getting text from text field.
+        String myText = tvText.getText().toString().trim();
+        // initializing MultiFormatWriter for QR code
+        MultiFormatWriter mWriter = new MultiFormatWriter();
+        try {
+            // BitMatrix class to encode entered text and set Width & Height
+            BitMatrix mMatrix = mWriter.encode(myText, BarcodeFormat.QR_CODE, 400, 400);
+            BarcodeEncoder mEncoder = new BarcodeEncoder();
+            Bitmap mBitmap = mEncoder.createBitmap(mMatrix); // creating bitmap of code
+            imageCode.setImageBitmap(mBitmap); // Setting generated QR code to imageView
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

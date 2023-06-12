@@ -20,9 +20,9 @@ public class MesReservations extends AppCompatActivity {
     private SimpleCursorAdapter adapter;
 
     final String[] from = new String[] {
-            DatabaseHelper.IMAGE, DatabaseHelper.IMAGE, DatabaseHelper.FILM, DatabaseHelper.DATE, DatabaseHelper.TIME };
+            DatabaseHelper.FILM, DatabaseHelper.TITLE, DatabaseHelper.DATE, DatabaseHelper.TIME };
 
-    final int[] to = {R.id.img, R.id.imgFilm, R.id.title, R.id.date_reserv, R.id.time_reserv};
+    final int[] to = {R.id.imgFilm, R.id.title, R.id.date_reserv, R.id.time_reserv};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -142,6 +142,11 @@ public class AjouterFilm extends AppCompatActivity implements View.OnClickListen
 
 
                 Toast.makeText(AjouterFilm.this, "Film ajouté avec succès", Toast.LENGTH_SHORT).show();
+                Intent accueil = new Intent(AjouterFilm.this, MainActivity.class);
+                accueil.putExtra("nom", getIntent().getStringExtra("nom"));
+                accueil.putExtra("prenom", getIntent().getStringExtra("prenom"));
+                accueil.putExtra("email", getIntent().getStringExtra("email"));
+                startActivity(accueil);
                 finish();
             }
         });
