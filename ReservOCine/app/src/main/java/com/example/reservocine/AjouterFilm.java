@@ -124,14 +124,12 @@ public class AjouterFilm extends AppCompatActivity implements View.OnClickListen
 
                 Intent intent = new Intent(AjouterFilm.this, VoirPlusFilm.class);
                 intent.putExtra("title", titre);
-                PendingIntent pendingIntent = PendingIntent.getActivity(AjouterFilm.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
 
                 Notification notification = new NotificationCompat.Builder(AjouterFilm.this, CHANNEL_ID)
                         .setSmallIcon(R.mipmap.ic_launcher_round)
                         .setContentTitle("Un nouveau film est disponible!")
                         .setContentText(titre)
-                        .setContentIntent(pendingIntent)
                         .build();
 
                 int notificationId = 1; // ID de notification arbitraire
